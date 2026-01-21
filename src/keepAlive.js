@@ -2,7 +2,7 @@
 
 import cron from "node-cron"
 
-const SERVER_URL = "https://....render.com"
+const SERVER_URL = "https://chatlify-backend-5v32.onrender.com/"
 
 cron.schedule("*/10 * * * *", async () => {
     try{

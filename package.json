@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type" : "module",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "dev" : "nodemon src/server.js",
-    "start" : "node src/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chatify_app_forchristalone": "file:..",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

@@ -6,20 +6,30 @@ import authRoutes from "./routes/auth.route.js"
 import messageRoutes from "./routes/message.route.js"
 import path from "path"
 import "./keepAlive.js"
+import mongoose from "mongoose"
 
 dotenv.config()
 
-const app = express()
+const app = express();
+
+app.use(express.json())
+
 const __dirname = path.resolve() 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 
 app.use("/api/auth",authRoutes );
 app.use("/api/messages",messageRoutes );
 
 
-
-console.log(__dirname)
-app.listen(3000, ()=>{
-    console.log("App running on port PORT: ", PORT)
-})
+mongoose
+    .connect(process.env.MONGO_DB_URI)
+    .then(()=>{
+            console.log("Connected to mongoDB successfully")
+            app.listen(PORT, ()=>{
+                console.log("App running on port PORT: ", PORT)
+            })
+    })
+    .catch((err)=>{
+        console.log(err.message)
+    })

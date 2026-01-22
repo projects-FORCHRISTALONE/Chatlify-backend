@@ -35,8 +35,8 @@ export const signup = async (req,res)=> {
         })
 
         if (newUser){
-            generateToken(newUser._id,res)
             await newUser.save()
+            generateToken(newUser._id,res)
 
             res.status(201).json({
                 _id: newUser._id,
@@ -49,9 +49,12 @@ export const signup = async (req,res)=> {
         }
 
     }catch(err){
-        console.log(err.message)
-        return res.status(500).send({message: err.message})
-    }
+       if (err?.code === 11000) {
+           return res.status(409).send({ message: "Email already exists" })
+       }
+       console.error(err)
+       return res.status(500).send({ message: "Internal server error" })
+   }
     
 }
 

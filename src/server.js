@@ -6,8 +6,7 @@ import messageRoutes from "./routes/message.route.js"
 import path from "path"
 import "./keepAlive.js"
 import mongoose from "mongoose"
-import { ENV } from "../lib/env.js";
-
+import { ENV } from "./lib/env.js";
 
 const app = express();
 

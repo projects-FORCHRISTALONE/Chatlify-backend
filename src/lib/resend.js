@@ -1,0 +1,12 @@
+// BY GOD'S GRACE ALONE
+
+import {Resend} from "resend"
+import { ENV } from "../lib/env.js";
+
+
+export const resendClient = new Resend(ENV.RESEND_API_KEY)
+
+export const sender = {
+    email: process.env.EMAIL_FROM ,
+    name: process.env.EMAIL_FROM_NAME 
+}

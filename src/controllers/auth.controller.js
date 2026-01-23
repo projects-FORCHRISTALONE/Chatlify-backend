@@ -93,7 +93,7 @@ export const login = async (req, res) => {
         });
 
     } catch (err) {
-        console.error("Error in login controller:", error)
+        console.error("Error in login controller:", err)
         res.status(500).send({ message: "Internal server error" })
     }
 
@@ -104,7 +104,7 @@ export const logout = (_, res) => {
     res.status(200).send({ message: "Logged out successfully" })
 }
 
-export const updateProfile = async (res, req) => {
+export const updateProfile = async (req, res) => {
     try {
         const { profilePic } = req.body
 
@@ -119,6 +119,8 @@ export const updateProfile = async (res, req) => {
             { profilePic: uploadResponse.secure_url }, 
             { new: true }
         ).select("-password")
+
+        if (!updatedUser) return res.status(404).json({ message: "User not found" })
 
         res.status(200).json(updatedUser)
     } catch (err) {

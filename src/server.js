@@ -7,10 +7,13 @@ import path from "path"
 import "./keepAlive.js"
 import mongoose from "mongoose"
 import { ENV } from "./lib/env.js";
+import cookieParser from "cookie-parser"
 
 const app = express();
 
 app.use(express.json())
+
+app.use(cookieParser())
 
 const __dirname = path.resolve() 
 
@@ -31,3 +34,4 @@ mongoose
     .catch((err)=>{
         console.log(err.message)
     })
+

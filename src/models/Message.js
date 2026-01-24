@@ -15,7 +15,9 @@ const messageSchema = mongoose.Schema(
             required : true
         },
         text : {
-            type : String
+            type : String,
+            trim : true,
+            
         },
         image : {
             type: String
